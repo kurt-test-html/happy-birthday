@@ -1,0 +1,73 @@
+:root {
+    --heart-red: #ff4d6d;
+    --tile-size: 100px;
+}
+
+body {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    background: #dea7b2;
+    font-family: sans-serif;
+}
+
+.board {
+    display: grid;
+    grid-template-columns: repeat(3, var(--tile-size));
+    grid-template-rows: repeat(3, var(--tile-size));
+    gap: 4px;
+    padding: 10px;
+    background: #dea7b2;
+    box-shadow: 0 10px 25px rgba(0,0,0,0.1);
+    border-radius: 8px;
+    position: relative;
+}
+
+.tile {
+    width: var(--tile-size);
+    height: var(--tile-size);
+    background-image: url('https://cdn-icons-png.flaticon.com/512/2107/2107845.png');
+    background-size: 300px 300px;
+    cursor: grab;
+    user-select: none;
+    border-radius: 4px;
+    transition: transform 0.2s, z-index 0s;
+}
+
+.tile:active {
+    cursor: grabbing;
+    transform: scale(1.05);
+    z-index: 10;
+}
+
+.tile.dragging {
+    opacity: 0.6;
+}
+
+button {
+    margin-top: 20px;
+    padding: 10px 25px;
+    background: var(--heart-red);
+    color: white;
+    border: none;
+    border-radius: 20px;
+    font-weight: bold;
+    cursor: pointer;
+}
+.message-container {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    background: rgba(255, 255, 255, 0.9);
+    padding: 20px 40px;
+    border-radius: 8px;
+    box-shadow: 0 10px 25px rgba(0,0,0,0.1);
+    display: none;
+    flex-direction: column;
+    align-items: center;
+}
+.message-container.show {
+    display: flex;
+}
